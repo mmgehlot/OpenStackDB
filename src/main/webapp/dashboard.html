@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Openstack Customized Dash Board</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+<script type="text/javascript">
+
+//$(document).ready(function(){
+function load_networks() {
+
+ jQuery.ajax({
+     url:"http://localhost:8080/rest/vtDashboard/users",
+     type:"GET",
+     contentType:'application/json',
+     dataType:"json",
+     success:function(data) {
+         console.log(data);
+         var i=1; 
+        
+         $("#network-table tbody tr").remove();
+             $.each(data, function (i, item) { 
+                var status;
+             $("#network-table").append($('<tr/>').append($('<td/>').append(item.id)).append($('<td/>').append(item.name)).append($('<td/>').append(item.self)));
+                i++;
+         });
+     },
+});
+
+}
+
+window.onload = load_networks;
+</script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-4.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+       
+
+          <ul class="nav">
+
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph2"></i>
+                        <p>HOME</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="nova.html">
+                        <i class="pe-7s-config"></i>
+                        <p>NOVA</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cinder.html">
+                        <i class="pe-7s-album"></i>
+                        <p>CINDER</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="neutron.html">
+                        <i class="pe-7s-network"></i>
+                        <p>NEUTRON</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="glance.html">
+                        <i class="pe-7s-science"></i>
+                        <p>GLANCE</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="keystone.html">
+                        <i class="pe-7s-key"></i>
+                        <p>KEYSTONE</p>
+                    </a>
+                </li>
+               
+			
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Horizon Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                       
+                       
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        <li>
+                            <a href="index.html">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+              
+
+
+
+          
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Information</h4>
+
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="dashboard.html" style="color:black; font-size:large;">Horizon</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Dashboard (Horizon) provides administrators and users with a graphical interface to access, provision, and automation of cloud-based resources. The design accommodates third party products and services, such as billing, monitoring, and additional management tools. The dashboard is also brand-able for service providers and other commercial vendors who want to make use of it. The dashboard is one of several ways users can interact with OpenStack resources.</span>
+                                </div>
+								<a href="nova.html" style="color:black; font-size:large;">Nova</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Compute (Nova) is a cloud computing fabric controller, which is the main part of an IaaS system. It is designed to manage and automate pools of computer resources and can work with widely available virtualization technologies, as well as bare metal and high-performance computing (HPC) configurations. </span>
+                                </div>
+								<a href="cinder.html" style="color:black; font-size:large;">Cinder</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Block Storage (Cinder) provides persistent block-level storage devices for use with OpenStack compute instances. The block storage system manages the creation, attaching and detaching of the block devices to servers. </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="neutron.html" style="color:black; font-size:large;">Neutron</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Networking (Neutron) is a system for managing networks and IP addresses. OpenStack Networking ensures the network is not a bottleneck or limiting factor in a cloud deployment, and gives users self-service ability, even over network configurations.</span>
+                                </div>
+                                <a href="glance.html" style="color:black; font-size:large;">Glance</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Image (Glance) provides discovery, registration, and delivery services for disk and server images. Stored images can be used as a template. It can also be used to store and catalog an unlimited number of backups. The Image Service can store disk and server images in a variety of back-ends, including Swift. The Image Service API provides a standard REST interface for querying information about disk images and lets clients stream the images to new servers.</span>
+                                </div>
+                               <a href="keystone.html" style="color:black; font-size:large;">Keystone</a>
+                                <div class="alert alert-info">
+                                    <span>OpenStack Identity (Keystone) provides a central directory of users mapped to the OpenStack services they can access. It acts as a common authentication system across the cloud operating system and can integrate with existing backend directory services like LDAP. It supports multiple forms of authentication including standard username and password credentials, token-based systems and AWS-style (i.e. Amazon Web Services) logins.</span>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
+		<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        
+    	});
+	</script>
+
+</html>

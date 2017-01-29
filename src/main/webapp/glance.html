@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Openstack Customized Dash Board</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-4.jpg">
+
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+  <div class="sidebar-wrapper">
+       
+
+            <ul class="nav">
+				
+                <li>
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph2"></i>
+                        <p>HOME</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="nova.html">
+                        <i class="pe-7s-config"></i>
+                        <p>NOVA</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cinder.html">
+                        <i class="pe-7s-album"></i>
+                        <p>CINDER</p>
+                    </a>
+                </li>
+                  <li>
+                    <a href="neutron.html">
+                        <i class="pe-7s-network"></i>
+                        <p>NEUTRON</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="glance.html">
+                        <i class="pe-7s-science"></i>
+                        <p>GLANCE</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="keystone.html">
+                        <i class="pe-7s-key"></i>
+                        <p>KEYSTONE</p>
+                    </a>
+                </li>
+           
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Glance</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                   
+
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        
+                        <li>
+                            <a href="index.html">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="header">
+
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#listImage" data-toggle="tab" style="color:black;">List of Images</a></li>
+                                            <li>
+                                                <a href="#addNewImage" data-toggle="tab" style="color:black;">Create new Image</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content" style="min-height:100%; height:100%;">
+                                        <div class="well tab-pane active" id="listImage" style="min-height:100%; height:100%;">
+                                            <div class="content table-responsive table-full-width" style="min-height:100%; height:100%;">
+                                                <table id="gridTable" class="table table-hover table-striped">  
+                                                <thead>
+                                                    <th>Index</th>
+                                                    <th>Image Name</th>
+                                                    <th>Size</th>
+                                                    <th>Disk Format</th>
+                                                    <th>Status</th>
+                                               
+                                                    <th>Delete</th>
+                                                    <th>Edit</th>
+                                                </thead>
+                                              
+                                                </table>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="well tab-pane col-md-6 tab-content" id="addNewImage">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="txtName">Name</label>
+                                                    <input type="text" name="txtName" class="form-control" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtDescription">Description</label>
+                                                    <textarea name="txtDescription" class="form-control"></textarea>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label>Image Source</label>
+                                                    <select id="cboImageSource" class="form-control">
+                                                        <option value="1">Image Location</option>
+                                                        <option value="2">Image File</option>
+                                                    </select>
+                                                </div>
+
+                                                <div id="fileLocationDiv" class="form-group">
+                                                    <label for="txtLocation">Image Location</label>
+                                                    <input type="text" name="txtImageLocation" class="form-control" />
+                                                </div>
+
+                                                <div id="imageFileDiv" class="form-group">
+                                                    <label class="btn btn-default btn-file">
+                                                        Choose Image File <input type="file" style="display: none;">
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label>Format</label>
+                                                    <select id="cboImageFormat" class="form-control">
+                                                        <option value="1">.raw</option>
+                                                        <option value="2">.vhd</option>
+                                                        <option value="3">.vhdx</option>
+                                                        <option value="4">.vmdk</option>
+                                                        <option value="5">.vdi</option>
+                                                        <option value="6">.iso</option>
+                                                        <option value="7">.qcow2</option>
+                                                        <option value="8">.aki</option>
+                                                        <option value="9">.ari</option>
+                                                        <option value="10">.ami</option>
+                                                    </select>
+
+
+                                                </div>
+                                                <div id="divDiskFormatDescription">
+                                                    <h5>Disk Format Description : </h5>
+                                                    <div id="lblraw" class="form-group">
+                                                        <label>
+                                                            This is an unstructured disk image format
+                                                        </label>
+                                                    </div>
+                                                    <div id="lblvhd" class="form-group">
+                                                        <label>
+                                                            This is the VHD disk format, a common disk format used by virtual machine monitors from VMware, Xen, Microsoft, VirtualBox, and others
+                                                        </label>
+                                                    </div>
+                                                    <div id="lblvhdx" class="form-group">
+                                                        <label>
+                                                            This is the VHDX disk format, an enhanced version of the vhd format which supports larger disk sizes among other features.
+                                                        </label>
+                                                    </div>
+                                                    <div id="lblvmdk" class="form-group">
+                                                        <label>
+                                                            Another common disk format supported by many common virtual machine monitors
+
+
+                                                        </label>
+                                                    </div>
+                                                    <div id="lblvdi" class="form-group">
+                                                        <label>
+                                                            A disk format supported by VirtualBox virtual machine monitor and the QEMU emulator
+                                                        </label>
+                                                    </div>
+                                                    <div id="lbliso" class="form-group">
+                                                        <label>
+                                                            An archive format for the data contents of an optical disc (e.g. CDROM).
+
+                                                        </label>
+                                                    </div>
+                                                    <div id="lblqcow2" class="form-group">
+                                                        <label>
+                                                            A disk format supported by the QEMU emulator that can expand dynamically and supports Copy on Write
+
+                                                        </label>
+                                                        <div id="lblaki" class="form-group">
+                                                            <label>
+                                                                This indicates what is stored in Glance is an Amazon kernel image
+
+                                                            </label>
+                                                        </div>
+                                                        <div id="lblari" class="form-group">
+                                                            <label>
+                                                                This indicates what is stored in Glance is an Amazon ramdisk image
+
+                                                            </label>
+                                                        </div>
+                                                        <div id="lblami" class="form-group">
+                                                            <label>
+                                                                This indicates what is stored in Glance is an Amazon machine image
+
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtArchitecture">Architecture</label>
+                                                    <input type="text" name="txtArchitecture" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtDisk">Minimum Disk (GB)</label>
+                                                    <input type="text" name="txtDisk" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtRAM">Minimum RAM (MB)</label>
+                                                    <input type="text" name="txtRAM" class="form-control" />
+                                                </div>
+                                                <div>
+                                                    <input type="submit" value="Save" class="btn btn-success" />
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+</body>
+</html>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+<script src="assets/js/demo.js"></script>
+
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+
+<script>
+    $("#imageFileDiv").hide();
+    $("#divDiskFormatDescription").hide();
+    $("#lblraw").hide();
+    $("#lblvhd").hide();
+    $("#lblami").hide();
+    $("#lblari").hide();
+    $("#lblqcow2").hide();
+    $("#lblaki").hide();
+    $("#lbliso").hide();
+    $("#lblvdi").hide();
+    $("#lblvmdk").hide();
+    $("#lblvhdx").hide();
+    $("#btnEdit").hide();
+
+
+    $(document).ready(function () {
+        $('#cboImageSource').on('change', function () {
+            if (this.value == '1')
+                //.....................^.......
+            {
+                $("#fileLocationDiv").show();
+                $("#imageFileDiv").hide();
+
+            }
+            else {
+                $("#fileLocationDiv").hide();
+                $("#imageFileDiv").show();
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#cboImageFormat').on('change', function () {
+
+            switch (this.value) {
+                case '1':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").show();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+                case '2':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").show();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+                case '3':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").show();
+                    break;
+                case '4':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").show();
+                    $("#lblvhdx").hide();
+                    break;
+                case '5':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").show();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+                case '6':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").show();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+                case '7':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").show();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+
+                case '8':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").show();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+
+                case '9':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").hide();
+                    $("#lblari").show();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+
+                case '10':
+                    $("#divDiskFormatDescription").show();
+                    $("#lblraw").hide();
+                    $("#lblvhd").hide();
+                    $("#lblami").show();
+                    $("#lblari").hide();
+                    $("#lblqcow2").hide();
+                    $("#lblaki").hide();
+                    $("#lbliso").hide();
+                    $("#lblvdi").hide();
+                    $("#lblvmdk").hide();
+                    $("#lblvhdx").hide();
+                    break;
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('.actionList ul li.edit').click(function (e) {
+            $('#addNewImage').trigger('click');
+        });
+    });
+
+
+
+
+
+    jQuery.ajax({
+        url:"http://localhost:8080/rest/vtDashboard/glance/getAllImages",
+        type:"GET",
+        contentType:'application/json',
+        dataType:"json",
+        success:function(data) {
+            console.log(data);
+            var i=1; 
+           
+            $("#gridTable tbody tr").remove();
+                $.each(data, function (i, item) { 
+                   var status;
+                $("#gridTable").append($('<tr/>').append($('<td/>').append(item.id)).append($('<td/>').append(item.name)).append($('<td/>').append(item.size)).append($('<td/>').append(item.disk_format)).append($('<td/>').append(item.status)).append($('<td><input type="button" value="Delete"/></td>')).append($('<td><input type="button" value="Edit"/></td>')));
+                   i++;
+            });
+        },
+   });
+</script>
+
+ 

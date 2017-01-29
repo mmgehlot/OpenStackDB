@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Openstack Customized Dash Board</title>
+	<style>
+		input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+		input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.label{
+	width: 100%;
+    padding: 12px;
+	
+}
+
+.btn{
+	width: 100%;
+    padding: 12px 20px;
+	font-size: large;
+	font-weight: bold;
+	border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+	</style>
+</head>
+
+<body>
+
+<div style="background-image: url('os2.png'); height: auto; min-height: 1000px; width: 100%;">
+     <div style="margin: 0 auto; width: 40%; height: 550px; padding-top: 200px;">
+      <form style="width: 90%; height: 540px; background-color: rgb(212, 215, 219); font-family: Arial, Helvetica, sans-serif; border: 1px solid #ccc;
+    border-radius: 4px; margin: 0 auto;">
+    <div class="container" style="padding: 40px;" >
+         <label class="label" style="padding-left: 0;"><b>Enter First Name:*</b></label></br>
+      <input type="text" id="username" placeholder="Enter First Name" name="fname" required>
+        </br> </br>
+        
+         <label class="label" style="padding-left: 0;"><b>Enter Last Name:*</b></label></br>
+      <input type="text" id="username" placeholder="Enter Last Name" name="lname" required>
+        </br> </br>     
+      <label class="label" style="padding-left: 0;"><b>Enter Username:*</b></label></br>
+      <input type="text" id="username" placeholder="Enter Username" name="uname" required>
+        </br> </br>
+      <label class="label" style="padding-left: 0;"><b>Enter Password:*</b></label> </br> 
+      <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+        </br> </br>
+        <label class="label" style="padding-left: 0;"><b>Confirm Password:*</b></label> </br> 
+      <input type="password" id="password" placeholder="Confirm Password" name="cspsw" required>
+        </br> </br> 
+      <button class="btn" type="submit">Submit</button>
+	  </br> </br>
+		 <a style="text-decoration: none;" href="index.html">Already have an account? Login</a>
+    </div>
+
+  </form>
+      </div>
+	 
+	 
+</div>
+
+</body>
+</html>
